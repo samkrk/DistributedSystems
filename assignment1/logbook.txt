@@ -1,0 +1,43 @@
+Assignment 1 
+
+We are building a client-server model, where the the calculator server 
+provides computation services, and the client requests these services.
+
+RMI is a Java API that allows an object running in one Java Virtual 
+Machine (JVM) to invoke methods on an object running in another JVM.
+
+An RMI Registery is a simple naming service that allows clients to 
+obtain a reference to a remote object. It acts as a directory for locating remote objects.
+
+Remote Interface: 
+The remote interface (Calculator.java) defines the methods that 
+can be called remotely. It extends java.rmi.Remote. 
+
+Remote Object Implementation:
+The class implementing the remote interface (CalculatorImplementation.java) 
+provides the actual implementation of the methods defined in the remote interface. 
+This class should extend UnicastRemoteObject and implement the remote interface.
+
+Server Program:
+The server program (CalculatorServer.java) creates an instance of the remote object 
+implementation, binds it to the RMI registry, and waits for client requests.
+
+Client Program:
+The client program (CalculatorClient.java) looks up the remote 
+object in the RMI registry and invokes methods on it.
+
+Stub: 
+Think of a stub as a "helper" on the client side. When a client wants to call a 
+method on a remote object (an object that exists on a different computer), the 
+client actually talks to the stub instead of the remote object directly. The stub 
+acts like a placeholder for the real object. It takes the client's request, packages 
+it up, sends it over the network to the server where the real object lives, and then 
+sends the response back to the client. So, the stub "stands in" for the remote object 
+and makes it seem like the object is local to the client.
+
+Proxy: 
+A proxy is a broader term that means something similar to a stub but can be used in 
+different contexts, not just in RMI. In general, a proxy is an object that controls 
+access to another object. In the case of RMI, the stub acts as a proxy for the remote 
+object because it controls access to it, managing the network communication between 
+the client and the server.
