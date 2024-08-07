@@ -9,6 +9,7 @@ BIN_DIR = bin
 # Classes
 SERVER = CalculatorServer
 CLIENT = CalculatorClient
+MULT_CLIENTS = ConcurrentCalculatorClient
 
 # Compile Java sources
 .PHONY: all
@@ -31,3 +32,8 @@ server:
 .PHONY: client
 client:
 	$(JAVA) -cp $(BIN_DIR) $(CLIENT)
+
+# Run the RMI clients
+.PHONY: test
+test:
+	$(JAVA) -cp $(BIN_DIR) $(MULT_CLIENTS)
